@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		9C0D14691C853A7D00E66F65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D14681C853A7D00E66F65 /* AppDelegate.swift */; };
-		9C0D146B1C853A7D00E66F65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D146A1C853A7D00E66F65 /* ViewController.swift */; };
 		9C0D146E1C853A7D00E66F65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D146C1C853A7D00E66F65 /* Main.storyboard */; };
 		9C0D14701C853A7D00E66F65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D146F1C853A7D00E66F65 /* Assets.xcassets */; };
 		9C0D14731C853A7D00E66F65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D14711C853A7D00E66F65 /* LaunchScreen.storyboard */; };
+		9C0D147B1C853B2000E66F65 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D147A1C853B2000E66F65 /* TableViewController.swift */; };
+		9C0D147D1C853C8F00E66F65 /* DetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D147C1C853C8F00E66F65 /* DetalleViewController.swift */; };
+		9C0D147F1C853E4B00E66F65 /* ISBNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D147E1C853E4B00E66F65 /* ISBNViewController.swift */; };
+		9C0D14811C85451300E66F65 /* Libro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D14801C85451300E66F65 /* Libro.swift */; };
+		9C0D14831C85458500E66F65 /* portada.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D14821C85458500E66F65 /* portada.png */; };
+		9C10BF531C8646FB0077F0D3 /* Internet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C10BF521C8646FB0077F0D3 /* Internet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9C0D14651C853A7D00E66F65 /* BuscarLibros2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuscarLibros2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0D14681C853A7D00E66F65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9C0D146A1C853A7D00E66F65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9C0D146D1C853A7D00E66F65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C0D146F1C853A7D00E66F65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C0D14721C853A7D00E66F65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C0D14741C853A7D00E66F65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C0D147A1C853B2000E66F65 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		9C0D147C1C853C8F00E66F65 /* DetalleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleViewController.swift; sourceTree = "<group>"; };
+		9C0D147E1C853E4B00E66F65 /* ISBNViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISBNViewController.swift; sourceTree = "<group>"; };
+		9C0D14801C85451300E66F65 /* Libro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Libro.swift; sourceTree = "<group>"; };
+		9C0D14821C85458500E66F65 /* portada.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portada.png; sourceTree = "<group>"; };
+		9C10BF521C8646FB0077F0D3 /* Internet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Internet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +65,16 @@
 			isa = PBXGroup;
 			children = (
 				9C0D14681C853A7D00E66F65 /* AppDelegate.swift */,
-				9C0D146A1C853A7D00E66F65 /* ViewController.swift */,
 				9C0D146C1C853A7D00E66F65 /* Main.storyboard */,
 				9C0D146F1C853A7D00E66F65 /* Assets.xcassets */,
 				9C0D14711C853A7D00E66F65 /* LaunchScreen.storyboard */,
 				9C0D14741C853A7D00E66F65 /* Info.plist */,
+				9C0D147A1C853B2000E66F65 /* TableViewController.swift */,
+				9C0D147C1C853C8F00E66F65 /* DetalleViewController.swift */,
+				9C0D147E1C853E4B00E66F65 /* ISBNViewController.swift */,
+				9C0D14801C85451300E66F65 /* Libro.swift */,
+				9C10BF521C8646FB0077F0D3 /* Internet.swift */,
+				9C0D14821C85458500E66F65 /* portada.png */,
 			);
 			path = BuscarLibros2;
 			sourceTree = "<group>";
@@ -124,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C0D14731C853A7D00E66F65 /* LaunchScreen.storyboard in Resources */,
+				9C0D14831C85458500E66F65 /* portada.png in Resources */,
 				9C0D14701C853A7D00E66F65 /* Assets.xcassets in Resources */,
 				9C0D146E1C853A7D00E66F65 /* Main.storyboard in Resources */,
 			);
@@ -136,8 +152,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C0D146B1C853A7D00E66F65 /* ViewController.swift in Sources */,
+				9C10BF531C8646FB0077F0D3 /* Internet.swift in Sources */,
+				9C0D147D1C853C8F00E66F65 /* DetalleViewController.swift in Sources */,
 				9C0D14691C853A7D00E66F65 /* AppDelegate.swift in Sources */,
+				9C0D147F1C853E4B00E66F65 /* ISBNViewController.swift in Sources */,
+				9C0D14811C85451300E66F65 /* Libro.swift in Sources */,
+				9C0D147B1C853B2000E66F65 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +307,7 @@
 				9C0D14791C853A7D00E66F65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
