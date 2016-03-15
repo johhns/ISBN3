@@ -7,17 +7,34 @@
 //
 
 import UIKit
+import CoreData
 
 class TableViewController: UITableViewController {
     
     
     var detalleLibro = Libro()
-    
+    var contexto :NSManagedObjectContext? = nil
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        self.contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let libroEntidad = NSEntityDescription.entityForName("Libros", inManagedObjectContext: self.contexto!)
+        let peticion = libroEntidad?.managedObjectModel.fetchRequestTemplateForName("buscarLibros")
+        do {
+            let registros = try self.contexto?.executeFetchRequest(peticion!)
+            for registro in registros! {
+                let _isbn = registro.valueForKey("isbn") as! String
+                let _titulo = registro.valueForKey("titulo") as! String
+                //let _autor = registro.valueForKey("autor") as! String
+                //let _portada = registro.valueForKey("portada") as! UIImage
+                libros.append( Libro(isbn : _isbn, titulo: _titulo))
+            }
+        }
+        catch {
+        }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,8 +65,8 @@ class TableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         cell.textLabel?.text = libros[indexPath.row].titulo
-        cell.imageView?.image = libros[indexPath.row].portada
-        cell.detailTextLabel?.text = libros[indexPath.row].autores[0] as String
+        //cell.imageView?.image = libros[indexPath.row].portada
+        cell.detailTextLabel?.text = libros[indexPath.row].isbn as String
         
         // Configure the cell...
 
@@ -106,18 +123,8 @@ class TableViewController: UITableViewController {
            if let indexPath = self.tableView.indexPathForSelectedRow {
               self.detalleLibro = libros[indexPath.row]
               let controller = segue.destinationViewController as! DetalleViewController
-              controller.titulo = "Titulo : " + detalleLibro.titulo
-              controller.portada = detalleLibro.portada
-              var autores : String = ""
-              if detalleLibro.autores.count > 1 {
-                 autores = "Autores : "
-              } else {
-                autores = "Autor : "
-              }
-             for a in 0..<detalleLibro.autores.count {
-                autores = autores + detalleLibro.autores[a] + "\n"
-             }
-             controller.autor = autores
+              controller.isbn = detalleLibro.isbn
+
             }
           } else {
           print("ISBN")

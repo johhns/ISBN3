@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class DetalleViewController: UIViewController {
     
-    var titulo = ""
-    var autor = ""
-    var portada : UIImage?
+    var isbn = ""
     
+    var contexto : NSManagedObjectContext? = nil
     
     @IBOutlet weak var tituloLibro: UILabel!
     
@@ -25,9 +25,31 @@ class DetalleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+        let libroEntidad = NSEntityDescription.entityForName("Libros", inManagedObjectContext: self.contexto!)
+        let peticion = libroEntidad?.managedObjectModel.fetchRequestFromTemplateWithName("buscarLibro", substitutionVariables: ["isbn" : isbn])
+        do {
+            let registros = try self.contexto!.executeFetchRequest(peticion!)
+            
+            if registros.count > 0 {
+                //let _isbn = registros[0].valueForKey("isbn") as! String
+                let _titulo = registros[0].valueForKey("titulo") as! String
+                let _autor = registros[0].valueForKey("autor") as! String
+                let _portada = registros[0].valueForKey("portada") as! NSData
+                tituloLibro.text = _titulo
+                autorLibro.text = _autor
+                portadaLibro.image = UIImage(data:  _portada )
+            }
+        }
+        catch {
+        }
+        
+        /*
         tituloLibro.text = self.titulo
         autorLibro.text = self.autor
         portadaLibro.image = self.portada!
+        */
 
         // Do any additional setup after loading the view.
     }

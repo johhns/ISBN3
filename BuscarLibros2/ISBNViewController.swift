@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class ISBNViewController: UIViewController {
     
+    var contexto : NSManagedObjectContext? = nil
     
     @IBOutlet weak var tituloISBN: UILabel!
     @IBOutlet weak var imagenISBN: UIImageView!
@@ -19,9 +21,25 @@ class ISBNViewController: UIViewController {
     
     @IBAction func btnBuscar(sender: UITextField) {
         
+        self.contexto = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+        
+        let lecturaISBN = sender.text
+        let libroEntidad = NSEntityDescription.entityForName("Libros", inManagedObjectContext: self.contexto!)
+        let peticion = libroEntidad?.managedObjectModel.fetchRequestFromTemplateWithName("buscarLibro", substitutionVariables: ["isbn" : lecturaISBN!])
+        do {
+            let registros = try self.contexto?.executeFetchRequest(peticion!)
+            
+            if registros?.count > 0 {
+                self.tituloISBN.text = "Este libro ya existe en la base"
+                return
+            }
+        }
+        catch {
+        }
         
         if Internet.conectado() == true {
-            let lecturaISBN = sender.text
+            
             let urls = "https://openlibrary.org/api/books?jscmd=data&format=json&bibkeys=ISBN:" + lecturaISBN!
             let url = NSURL(string: urls)
             let datos = NSData(contentsOfURL: url!)
@@ -65,7 +83,26 @@ class ISBNViewController: UIViewController {
                         }
                     }
                     
-                    libros.append(Libro(titulo:self.tituloISBN.text!,autores:self.autoresArray,portada: self.imagenISBN.image! ) )
+                    
+
+                    
+                    let libroNuevo = NSEntityDescription.insertNewObjectForEntityForName("Libros", inManagedObjectContext: self.contexto!)
+                    
+                    libroNuevo.setValue(lecturaISBN!, forKey: "isbn")
+                    libroNuevo.setValue(self.tituloISBN.text!, forKey: "titulo")
+                    libroNuevo.setValue(autoresTxt, forKey: "autor")
+                    libroNuevo.setValue(UIImagePNGRepresentation(self.imagenISBN.image!) , forKey: "portada")
+                    
+                    do {
+                          try self.contexto?.save()
+                       }
+                    catch {
+                    
+                    }
+                    
+                    libros.append(Libro(isbn: lecturaISBN!,titulo:self.tituloISBN.text!) )
+                    
+                    
                     
                 } else {
                     self.tituloISBN.text = "codigo no encontrado"

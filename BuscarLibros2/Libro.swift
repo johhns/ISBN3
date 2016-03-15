@@ -11,20 +11,16 @@ import UIKit
 
 public class Libro {
     var titulo : String
-    var autores : [String]
-    var portada : UIImage
+    var isbn : String
     
-    init ( titulo: String, autores: [String], portada: UIImage){
+    init ( isbn: String, titulo: String){
+        self.isbn = isbn
         self.titulo = titulo
-        self.autores = autores
-        self.portada = portada
-        
     }
     
     init () {
+        isbn = ""
         titulo = ""
-        autores = []
-        portada = UIImage(named: "portada")!
     }
 }
 
